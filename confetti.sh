@@ -9,8 +9,7 @@ split_file() {
 	for i in $(seq 0 $NUMBER_OF_CLIPS); do
 		echo "$FILENAME,$((i * CLIP_LENGTH)),$CLIP_LENGTH" >>confetti-temp.edl
 	done
-	LAST=$((DURATION % CLIP_LENGTH))
-	echo "$FILENAME,$(((NUMBER_OF_CLIPS + 1) * CLIP_LENGTH)),$LAST" >>confetti-temp.edl
+	echo "$FILENAME,$(((NUMBER_OF_CLIPS + 1) * CLIP_LENGTH))" >>confetti-temp.edl
 }
 
 for file in *; do
