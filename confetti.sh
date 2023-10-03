@@ -11,8 +11,7 @@ split_file() {
         echo "$FILENAME,$((i * CLIP_LENGTH)),$CLIP_LENGTH" >> playlist-temp.edl
     done
     LAST=$((DURATION % CLIP_LENGTH))
-    LAST_SPARE=$(echo "$DURATION_RAW" | cut -d '.' -f2)
-    echo "$FILENAME,$(((NUMBER_OF_CLIPS + 1) * CLIP_LENGTH)),$LAST.$LAST_SPARE" >> playlist-temp.edl
+    echo "$FILENAME,$(((NUMBER_OF_CLIPS + 1) * CLIP_LENGTH)),$LAST" >> playlist-temp.edl
 }
 
 for file in * ; do
