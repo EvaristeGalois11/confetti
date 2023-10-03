@@ -4,6 +4,7 @@ CLIP_LENGTH=10
 
 split_file() {
 	FILENAME="$1"
+	printf %s%n "$FILENAME" FILENAME_LENGTH >/dev/null
 	DURATION=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$FILENAME" | cut -d '.' -f1)
 	NUMBER_OF_CLIPS=$((DURATION / CLIP_LENGTH))
 	for i in $(seq 0 $NUMBER_OF_CLIPS); do
@@ -15,7 +16,7 @@ split_file() {
 			LENGTH=",$CLIP_LENGTH"
 			;;
 		esac
-		echo "$FILENAME,$((i * CLIP_LENGTH))$LENGTH" >>confetti-temp.edl
+		echo "%$FILENAME_LENGTH%$FILENAME,$((i * CLIP_LENGTH))$LENGTH" >>confetti-temp.edl
 	done
 }
 
