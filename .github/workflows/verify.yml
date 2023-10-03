@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Shellcheck'
-        run: shellcheck confetti.sh
+      - name: 'Shell check'
+        uses: luizm/action-sh-checker@v0.7.0
